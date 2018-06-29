@@ -1,0 +1,560 @@
+﻿<html>
+<head>
+      
+
+                <style type="text/css">
+
+.new_F4 {
+	FONT-SIZE: 14px ;color:#404042; font-weight: bold;
+}
+</style>
+      
+                    <style type="text/css">
+
+.samesortgoods_L17 {
+	LINE-HEIGHT: 230%
+}
+.samesortgoods_F3 {
+	FONT-SIZE: 12px ;color:#A8A7A7; 
+}
+A.samesortgoods_A1:link {
+	FONT-SIZE: 12px; COLOR: #554F4F; TEXT-DECORATION: none
+}
+A.samesortgoods_A1:active {
+	FONT-SIZE: 12px; COLOR: #554F4F; TEXT-DECORATION: underline
+}
+A.samesortgoods_A1:visited {
+	FONT-SIZE: 12px; COLOR: #554F4F; TEXT-DECORATION: none
+}
+A.samesortgoods_A1:hover {
+	FONT-SIZE: 12px; COLOR: #554F4F; TEXT-DECORATION: underline
+}
+</style>
+    <title>北京市新华书店王府井书店 - 网上书店80折起，购书满99元免运费！</title>
+    <meta content="北京市新华书店王府井书店，致力于提供专业化购书服务.网上购书选择新华书店王府井书店(网上书店),购书放心有保障.王府井书店电话:010-65132842.010-65252592" name="description" />
+    <meta content="王府井书店 新华书店 网上书店 网上购书 北京图书大厦" name="keywords">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+    <link href="/css/index.css" rel="stylesheet" type="text/css">
+    <link href="/Template/css.css" rel="stylesheet" />
+    <link href="/Template/css1.css" rel="stylesheet" />
+    <link href="/Css/themes/ui-lightness/jquery.ui.all.css" rel="stylesheet" />
+    <script src="/js/jquery-1.7.1.js"></script>
+    <script src="/js/jquery-ui-1.8.2.custom.min.js"></script>
+    <script src="/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            loadComment();//加载评论内容
+            loadUBBCode();//加载UBB编辑器
+            checkUserState();//判断用户是否登录
+            $("#btnAddComment").click(function () {
+                addComment();//添加评论
+            });
+            //跳转登录页面
+            $("#locationLogin").click(function () {
+                showLoginUrl();
+            });
+            //添加商品到购物车.
+            $("#btnAddCart").click(function () {
+                addProductCart();
+            });
+        });
+        //将商品添加到购物车。
+        function addProductCart() {
+            //判断用户是否登录
+            $.post("/ashx/CheckUserLogin.ashx", {}, function (data) {
+                var serverData = data.split(':');
+                if (serverData[0] == "yes") {
+                    $.post("/ashx/ProcessCart.ashx", { "bookId": 4948 }, function (data) {
+                        if (data == "yes") {
+                            $("#showCartMsg").text("商品已经添加到购物车中");
+                            $("#showDialogMessage").dialog({
+                                modal: true,
+                                buttons: {
+                                    Ok: function () {
+                                        $(this).dialog("close");
+                                    }
+                                }
+                            });
+                        } else {
+                            alert("添加商品失败");
+                        }
+                    });
+                } else {
+                    $("#showUserLoginMsg").text(serverData[1]);
+                    $("#dialog-message").dialog({
+                        modal: true,
+                        buttons: {
+                            Ok: function () {
+                                $(this).dialog("close");
+                            }
+                        }
+                    });
+                }
+            });
+        }
+
+        //加载评论
+        function loadComment() {
+            $.post("/ashx/ProcessComment.ashx", { "bookId": 4948,"action":"load"}, function (data) {
+                var serverData = $.parseJSON(data);
+                var serverDataLenght = serverData.length;
+                for (var i = 0; i < serverDataLenght; i++) {
+                    $("<li style='float:none;text-align:left;font-size:14px'>" + serverData[i].CreateDateTime + ":" + serverData[i].Msg + "</li>").appendTo("#commentList");
+                }
+            });
+        }
+        //添加评论
+        function addComment() {
+            // var msg = $("#txtComment").val();
+            var oEditor = CKEDITOR.instances.txtComment;
+            var msg = oEditor.getData();//获取编辑器中的值.
+            if (msg != "") {
+                $.post("/ashx/CheckUserLogin.ashx", {}, function (data) {//判断用户是否登录
+                    var serverData = data.split(':');
+                    if (serverData[0] == "yes") {
+                        $.post("/ashx/ProcessComment.ashx", { "msg": msg, "bookId": 4948, "action": "add" }, function (serverData) {
+                            var data = serverData.split(':');
+                            if (data[0] == "ok") {
+                                $("#commentList li").remove();
+                                //$("#txtComment").val("");
+                                oEditor.setData("");
+                                loadComment();
+                            } else {
+                                alert(data[1]);
+                            }
+                        });
+                    } else {
+                        //如果没有登录，给出提示。
+                        $("#showUserLoginMsg").text(serverData[1]);
+                        $("#dialog-message").dialog({
+                            modal: true,
+                            buttons: {
+                                Ok: function () {
+                                    $(this).dialog("close");
+                                }
+                            }
+                        });
+                    }
+                });
+                
+            } else {
+                alert("评论内容不能为空!!");
+            }
+        }
+        //判断用户是否登录.
+        function checkUserState() {
+            $.post("/ashx/CheckUserLogin.ashx", {}, function (data) {
+                var serverData = data.split(':');
+                if (serverData[0] == "yes") {
+                    $("#showUserName").text(serverData[1]);
+                } else {
+                    $("#showLoginInfo").css("display","block");
+                }
+            });
+        }
+        //跳转登录页面
+        function showLoginUrl() {
+            var url=window.location.href;
+            window.location.href = "/Account/Login.aspx?returnUrl=" + url;
+        }
+        //加载UBB编辑器
+        function loadUBBCode() {
+            CKEDITOR.replace('txtComment',
+	{
+	    extraPlugins: 'bbcode',
+	    removePlugins: 'bidi,button,dialogadvtab,div,filebrowser,flash,format,forms,horizontalrule,iframe,indent,justify,liststyle,pagebreak,showborders,stylescombo,table,tabletools,templates',
+	    toolbar:
+		[
+			['Source', '-', 'Save', 'NewPage', '-', 'Undo', 'Redo'],
+			['Find', 'Replace', '-', 'SelectAll', 'RemoveFormat'],
+			['Link', 'Unlink', 'Image'],
+			'/',
+			['FontSize', 'Bold', 'Italic', 'Underline'],
+			['NumberedList', 'BulletedList', '-', 'Blockquote'],
+			['TextColor', '-', 'Smiley', 'SpecialChar', '-', 'Maximize']
+		],
+	    smiley_images:
+		[
+			'regular_smile.gif', 'sad_smile.gif', 'wink_smile.gif', 'teeth_smile.gif', 'tounge_smile.gif',
+			'embaressed_smile.gif', 'omg_smile.gif', 'whatchutalkingabout_smile.gif', 'angel_smile.gif', 'shades_smile.gif',
+			'cry_smile.gif', 'kiss.gif'
+		],
+	    smiley_descriptions:
+		[
+			'smiley', 'sad', 'wink', 'laugh', 'cheeky', 'blush', 'surprise',
+			'indecision', 'angel', 'cool', 'crying', 'kiss'
+		]
+	});
+        }
+    </script>
+    <style type="text/css">
+
+.samesortgoods_L17 {
+	LINE-HEIGHT: 230%
+}
+.samesortgoods_F3 {
+	FONT-SIZE: 12px ;color:#A8A7A7; 
+}
+.new_F4 {
+	FONT-SIZE: 14px ;color:#404042; font-weight: bold;
+}
+
+/*修改编辑器的样式*/
+        #cke_txtComment {
+        width:650px;
+        }
+
+        </style>
+</head>
+
+
+<body>
+
+        <center>
+
+<div class="top">
+	<div class="m_c" style="width: 736px; height: 27px">
+	<span class="l">
+      <a href="http://www.beifabook.com" target="_blank">北发图书网主网站</a> |&nbsp;
+      <a href="http://www.bjbb.com" target="_blank">北京图书大厦</a>&nbsp; |
+      <a href="../default.aspx" target="_blank"><font color="#00A0E9">王府井书店</font></a>&nbsp;|
+      <a href="http://www.zgcbb.com/" target="_blank">中关村图书大厦</a>&nbsp; |
+      <a href="http://www.yycbook.com/" target="_blank">亚运村图书大厦</a>&nbsp; |
+      <a href="http://www.hs-book.com" target="_blank">花市书店</a>&nbsp; |
+	  <a href="/OrderInfo.aspx" >我的订单</a> &nbsp;&nbsp;     
+	
+    
+    </span><span id="showUserName" style="font-size:14px;color:red"></span>
+    <span id="showLoginInfo" style="font-size:14px;color:red;display:none">登录</span></div></div>
+
+
+	<div style="WIDTH: 750px; text-align: left;"><img src="/images/集团网站1.jpg" width="780" height="93" /><br />
+&nbsp;&nbsp;&nbsp;&nbsp;         </div>
+
+
+<div id="main_box">
+    <table align="center" border="0" cellpadding="0" cellspacing="0" width="800">
+        <tr>
+            
+    
+	<!-- 中间占位的空单元格 -->
+            
+    
+	<!-- 中间占位的空单元格 -->
+            <td align="center" valign="top" width="924">
+     <!-- 装右侧内容的单元格 -->
+
+                <style type="text/css">
+
+.new_F4 {
+	FONT-SIZE: 14px ;color:#404042; font-weight: bold;
+}
+</style>
+                <table bgcolor="#F3F3F5" border="0" cellpadding="5" cellspacing="0" height="41" width="100%">
+                    <tr>
+                        <td valign="middle" width="10">&nbsp;</td>
+                        <td valign="middle">
+                            <h1 class="new_F4" style="margin-bottom:0px;">深度探索 C++ 对象模型 <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                <tr>
+                                    <td align="right" valign="middle"><a class="A21" href="javascript:void(0)" 推荐给朋友</a></td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+                <table border="0" cellpadding="8" cellspacing="0" width="100%">
+                    <tr>
+                        <td align="center" valign="top" width="152">
+                            <table border="0" cellpadding="0" cellspacing="0" height="216" width="150">
+                                <tr>
+                                    <td>
+                                        <img alt="深度探索 C++ 对象模型" border="1" height="216"  src="/Images/BookCovers/9787560924182.jpg" style="border:1px   solid   #B0B0B0" title="深度探索 C++ 对象模型" width="150" /></td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td valign="top" width="564">
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                <tr>
+                                    <td height="31" valign="bottom"><font class="F24"><del>定价：￥42.0</del><table border="0" cellpadding="4" cellspacing="0" width="100%">
+                                <tr>
+                                    <td align="left" class="L14" valign="top" width="50%"><font class="F24">作者：（美）Stanley B. Lippman  著，侯捷  译
+                                        <br />
+                                        书名：深度探索 C++ 对象模型<br />
+                                        字数：350000<br />
+                                        出版时间：2001/5/1<br />
+                                        版&nbsp;&nbsp;&nbsp;&nbsp;次： 
+                                        <br />
+		                <!-- 印刷时间： 2008/03/01<br>  -->
+		                                印&nbsp;&nbsp;&nbsp;&nbsp;次：<br />
+                                        I S B N ： 9787560924182<br />
+                                        <font color="#CC3300">本网价：<strong>￥54.00</strong></font></font></td>
+                                    <td align="left" class="L14" valign="top" width="50%">
+                                        <p>
+                                            <br />
+                                            <br />
+                                            <font class="F24">&nbsp;<br />
+                                            页&nbsp;&nbsp;&nbsp;&nbsp;数： 
+                                            <br />
+                                            开&nbsp;&nbsp;&nbsp;&nbsp;本： 
+                                            <br />
+                                            纸&nbsp;&nbsp;&nbsp;&nbsp;张： 
+                                            <br />
+                                            包&nbsp;&nbsp;&nbsp;&nbsp;装： </font>
+                                        </p>
+                                    </td>
+                                </tr>
+                            </table>
+                                        &nbsp;&nbsp; </font> </td>
+                                </tr>
+                                <tr>
+                                    <td height="43">
+                                        <table border="0" cellpadding="0" cellspacing="0">
+                                            <tr>
+                                                <td align="left" valign="middle"><a href="javascript:void(0)" name="buy_book">
+                                                    <img border="0" height="20" src="/Template/image/7.jpg" style="cursor:hand" width="69" id="btnAddCart" /></a> &nbsp;</td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td height="25">&nbsp;</td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+       <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                  
+                </table>
+                <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                    <tr>
+                        <td align="center" valign="middle" width="20">
+                            <img height="7" src="/Template/image/11x.jpg" /></td>
+                        <td align="left" class="F25" valign="middle">心田服务承诺</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" height="10"></td>
+                    </tr>
+                    <tr>
+                        <td align="left" valign="top">&nbsp;</td>
+                        <td align="left" class="L14" valign="top"><font class="F24">正品：心田只做正品 假一赔一<br />
+                            供货：商品均由品牌商或一级经销商供货<br />
+                            送货：全国送达<br />
+                            运费：全中国各省市地区全部免运费<br />
+                            退换货：签收15日内，商品及包装保持本网站出售时原状且配件齐全，不影响二次销售，全款退货 </font></td>
+                    </tr>
+                </table>
+                <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                    <tr>
+                        <td background="/Template/image/12.jpg" height="39">&nbsp;</td>
+                    </tr>
+                </table>
+                <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                    <tr>
+                        <td align="left" valign="middle" width="10">
+                            <img height="7" src="/Template/image/11.jpg" width="4" /></td>
+                        <td align="left" class="F25" valign="middle">目录内容</td>
+                    </tr>
+                    <tr>
+                        <td align="left" height="25" valign="top">&nbsp;</td>
+                        <td align="left" class="L15" valign="top">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td align="left" valign="top">&nbsp;</td>
+                        <td align="left" class="L15" valign="top">本立道生（侯捷 译序）<BR>目录<BR>前言（Stanley B.Lippman）<BR>第0章 导读（译者的话）<BR>第1章 关于对象（Object Lessons）<BR>加上封装后的布局成本（Layout Costs for Adding Encapsulation）<BR>1.1 C++模式模式（The C++ Object Model）<BR>简单对象模型（A Simple Object Model）<BR>表格驱动对象模型（A Table-driven Object Model）<BR>C++对象模型（The C++ Object Model）<BR>对象模型如何影响程序（How the Object Model Effects Programs）<BR>1.2 关键词所带来的差异（A Keyword Distinction）<BR>关键词的困扰<BR>策略性正确的struct（The Politically Correct Struct）<BR>1.3 对象的差异（An Object Distinction）<BR>指针的类型（The Type of a Pointer）<BR>加上多态之后（Adding Polymorphism）<BR>第2章 构造函数语意学（The Semantics of constructors）<BR>2.1 Default Constructor的建构操作<BR>“带有Default Constructor”的Member Class Object<BR>“带有Default Constructor”的Base Class<BR>“带有一个Virual Function”的Class<BR>“带有一个virual Base class”的Class<BR>总结<BR>2.2 Copy Constructor的建构操作<BR>Default Memberwise Initialization<BR>Bitwise Copy Semantics（位逐次拷贝）<BR>不要Bitwise Copy Semantics！<BR>重新设定的指针Virtual Table<BR>处理Virtual Base Class Subobject<BR>2.3 程序转换语意学（Program Transformation Semantics）<BR>明确的初始化操作（Explicit Initialization）<BR>参数的初始化（Argument Initialization）<BR>返回值的初始化（Return Value Initialization）<BR>在使用者层面做优化（Optimization at the user Level）<BR>在编译器层面做优化（Optimization at the Compiler Level）<BR>Copy Constructor：要还是不要？<BR>摘要<BR>2.4 成员们的初始化队伍（Member Initialization List）<BR>第3章 Data语意学（The Semantics of Data）<BR>3.1 Data Member的绑定（The Binding of a Data Member）<BR>3.2 Data Member的布局（Data Member Layout）<BR>3.3 Data Member的存取<BR>Static Data Members<BR>Nonstatic Data Member<BR>3.4 “继承”与Data Member<BR>只要继承不要多态（Inheritance without Polymorphism）<BR>加上多态（Adding Polymorphism）<BR>多重继承（Multiple Inheritance）<BR>虚拟继承（Virtual Inheritance）<BR>3.5 对象成员的效率（Object Member Efficiency）<BR>3.6 指向Data Members的指针（Pointer to Data Members）<BR>“指向Members的指针”的效率问题<BR>第4章 Function语意学（The Semantics of Function）<BR>4.1 Member的各种调用方式<BR>Nonstatic Member Functions（非静态成员函数）<BR>Virtual Member Functions（虚拟成员函数）<BR>Static Member Functions（静态成员函数）<BR>4.2 Virtual Member Functions（虚拟成员函数）<BR>多重继承下的Virtual Functions<BR>虚拟继承下的Virtual Functions<BR>4.3 函数的效能<BR>4.4 指向Member Functions的指针（Pointer-to-Member Functions）<BR>支持“指向Virtual Member Functions”之指针<BR>在多重继承之下，指向Member Functions的指针<BR>“指向Member Functions之指针”的效率<BR>4.5 Inline Functions<BR>形式对数（Formal Arguments）<BR>局部变量（Local Variables）<BR>第5章 构造、解构、拷贝 语意学（Semantics of Construction，Destruction，and Copy）<BR>纯虚拟函数的存在（Presence of a Pure Virtual Function）<BR>虚拟规格的存在（Presence of a Virtual Specification）<BR>虚拟规格中const的存在<BR>重新考虑class的声明<BR>5.1 无继承情况下的对象构造<BR>抽象数据类型（Abstract Data Type）<BR>为继承做准备<BR>5.2 继承体系下的对象构造<BR>虚拟继承（Virtual Inheritance）<BR>初始化语意学（The Semantics of the vptr Initialization）<BR>5.3 对象复制语意学（Object Copy Semantics）<BR>5.4 对象的功能（Object Efficiency）<BR>5.5 解构语意学（Semantics of Destruction）<BR>第6章 执行期语意学（Runting Semantics）<BR>6.1 对象的构造和解构（Object Construction and Destruction）<BR>全局对象（Global Objects）<BR>局部静态对象（Local Static Objects）<BR>对象数组（Array of Objects）<BR>Default Constructors和数组<BR>6.2 new和delete运算符<BR>针对数组的new语意<BR>Placement Operator new的语意<BR>6.3 临时性对象（Temporary Objects）<BR>临时性对象的迷思（神话、传说）<BR>第7章 站在对象模型的类端（On the Cusp of the Object Model）<BR>7.1 Template<BR>Template的“具现”行为（Template Instantiation）<BR>Template的错误报告（Error Reporting within a Template）<BR>Template中的名称决议方式（Name Resolution within a Template）<BR>Member Function的具现行为（Member Function Instantiation）<BR>7.2 异常处理（Exception Handling）<BR>Exception Handling快速检阅<BR>对Exception Handling的支持<BR>7.3 执行期类型识别（Runtime Type Identification，RTTI）<BR>Type-Safe Downcast（保证安全的向下转型操作）<BR>Type-Safe Dynamic Cast（保证安全的动态转型）<BR>References并不是Pointers<BR>Typeid运算符<BR>7.4 效率有了，弹性呢？<BR>动态共享函数库（Dynamic Shared Libraries）<BR>共享内存（Shared Memory） </td>
+                    </tr>
+                </table>
+                <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                    <tr>
+                        <td background="/Template/image/12.jpg" height="39">&nbsp;</td>
+                    </tr>
+                </table>
+                <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                    <tr>
+                        <td align="left" valign="middle" width="10">
+                            <img height="7" src="/Template/image/11.jpg" width="4" /></td>
+                        <td align="left" class="F25" valign="middle">内容简介</td>
+                    </tr>
+                    <tr>
+                        <td align="left" height="25" valign="top">&nbsp;</td>
+                        <td align="left" class="L15" valign="top">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td align="left" valign="top">&nbsp;</td>
+                        <td align="left" class="L15" valign="top">本书重点：探索“对象导向程序所支持的C++对象模型”下的程序行为。对于“对象导向性质之基础实现技术”以及“各种性质背后的隐含利益交换”提供一个清楚的认识。检验由程序变形所带来的效率冲击。提供丰富的程序范例、图片，以及对象导向观念和底层对象模型之间的效率测量。<br>&nbsp;&nbsp;&nbsp;&nbsp;C++成山似海的书籍堆中，这一本不是婴幼儿奶粉，也不是较大婴儿奶粉，它是成人专用的低脂高钙特殊奶粉。<br>&nbsp;&nbsp;&nbsp;&nbsp;对于C++底层机制感兴趣的读者，这本书会给你“漫卷诗书喜欲狂”的感觉。<br>&nbsp;&nbsp;&nbsp;&nbsp;了解C++ Object Model，是学习Component Object Model的最短路线。<br>&nbsp;&nbsp;&nbsp;&nbsp;如果你是一位C++程序员，渴望对于底层知识获得一个完整的了解，那么Inside The C++ Object Model正适合你。<br>&nbsp;&nbsp;&nbsp;&nbsp;关于作者：Stanley Lippman目前是华特迪斯尼主题动画公司（Walt Disney Feature Animation）的主要软件工程师。他曾经在AT&T贝尔实验室领导cfront 3.0和2.1版的编译器开发小组。他也是贝尔实验室中由Bjame Stroustrup所领导的Foundation专案组中的一员，负责对象模型并研究C++程序开发环境。Stan著有极为成功的C++ Primer一书，也发表过许多C++方面的论文。Stan最近刚从C++ Report的编辑位置上“退隐”，他曾在那个位置上做了4年。他的C++论述遍及全球。<br>&nbsp;&nbsp;&nbsp;&nbsp;关于译者：侯捷，海峡两岸著名的电脑技术自由作家，对于技术的钻研和发表，有独特的品性与坚持。作品涵盖著、译、评三方面，散见于各种刊特、媒体、网站论坛，深受读者喜爱和尊敬。 </td>
+                    </tr>
+                </table>
+                <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                    <tr>
+                        <td background="/Template/image/12.jpg" height="39">&nbsp;</td>
+                    </tr>
+                </table>
+                <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                    <tr>
+                        <td align="left" valign="middle" width="10">
+                            <img height="7" src="/Template/image/11.jpg" width="4" /></td>
+                        <td align="left" class="F25" valign="middle">作者简介</td>
+                    </tr>
+                    <tr>
+                        <td align="left" height="25" valign="top">&nbsp;</td>
+                        <td align="left" class="L15" valign="top">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td align="left" valign="top">&nbsp;</td>
+                        <td align="left" class="L15" valign="top">（美）Stanley B. Lippman  著，侯捷  译Desc</td>
+                    </tr>
+                </table>
+                <style type="text/css">
+
+A.new_A8:link {
+	FONT-SIZE: 12px; COLOR: #ffffff; TEXT-DECORATION: none
+}
+A.new_A8:active {
+	FONT-SIZE: 12px; COLOR: #ffffff; TEXT-DECORATION: underline
+}
+A.new_A8:visited {
+	FONT-SIZE: 12px; COLOR: #ffffff; TEXT-DECORATION: none
+}
+A.new_A8:hover {
+	FONT-SIZE: 12px; COLOR: #ffffff; TEXT-DECORATION: underline
+}
+
+</style>
+
+                <a name="reviewsummary"></a>
+                <table border="0" cellpadding="0" cellspacing="0" height="144" width="100%">
+                    <tr>
+                        <td align="left" valign="top">
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                <tr>
+                                    <td>&nbsp;</td>
+                                </tr>
+                            </table>
+                            <table bgcolor="#639AC3" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                <tr>
+                                    <td>
+                                        <table 0="" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                            <tr>
+                                                <td height="26" width="1%">&nbsp;</td>
+                                                <td align="left"><span class="F27">顾客评论 </span> </td>
+                                                <td align="left" width="75">&nbsp;</td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+			    <!---->
+                            <table border="0" cellpadding="0" cellspacing="0" height="23" width="100%">
+                                <tr>
+                                    <td >
+
+                                        <ul id="commentList" >
+
+                                        </ul>
+
+                                    </td>
+                                </tr>
+                            </table>
+                            <table bgcolor="#F5F5F5" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                <tr>
+                                    <td align="center" height="321" valign="middle">
+                                        <table border="0" cellpadding="0" cellspacing="0" width="90">
+                                            <tr>
+                                                <td align="left" height="39">
+                                                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                                        <tr>
+                                                            <td align="left" height="25">我要评论</td>
+                                                            <td align="right" valign="bottom">不超过2000字</td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="center">
+                                                    <textarea cols="90" name="nr" rows="10" id="txtComment" style="width:600px"></textarea> </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="left" height="35" valign="bottom">
+                                                    <span id="userspan">
+                                                  
+                                                    不需要登录，点发表评论即可！ </span></td>
+                                            </tr>
+                                            <tr>
+                                                <td align="left" height="35">
+                                                    <img border="0" height="19" id="btnAddComment" src="/Template/image/12.gif" style="cursor:hand" width="64" /> </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    </div>
+<div id="footer">
+    <table align="center" border="0" cellpadding="0" cellspacing="0" style="BORDER: #DCDADD 1px solid;" width="1100">
+        <tr>
+            <td height="37" rowspan="2"></td>
+            <td align="left" class="style_14_000000" height="32" valign="bottom" width="150"><b>新手上路</b></td>
+            <td align="left" class="style_14_000000" valign="bottom" width="150"><b>付款方式</b></td>
+            <td align="left" class="style_14_000000" valign="bottom" width="150"><b>配送方式</b></td>
+            <td align="left" class="style_14_000000" valign="bottom" width="150"><b>售后服务</b></td>
+            <td align="left" class="style_14_000000" valign="bottom" width="150"><b>帮助中心</b></td>
+        </tr>
+        <tr>
+            <td align="left" height="13" valign="middle">
+                <img height="1" src="/Template/image/mid10.jpg" width="116" /></td>
+            <td align="left" class="style_14_000000" valign="middle" width="150">
+                <img height="1" src="/Template/image/mid10.jpg" width="116" /></td>
+            <td align="left" class="style_14_000000" valign="middle" width="150">
+                <img height="1" src="/Template/image/mid10.jpg" width="116" /></td>
+            <td align="left" class="style_14_000000" valign="middle" width="150">
+                <img height="1" src="/Template/image/mid10.jpg" width="116" /></td>
+            <td align="left" class="style_14_000000" valign="middle" width="150">
+                <img height="1" src="/Template/image/mid10.jpg" width="116" /></td>
+        </tr>
+        <tr>
+            <td height="100" width="100">&nbsp;</td>
+            <td align="left" class="style_h170" valign="top"><a class="a_12_000000" href="/Account/Register.aspx" target="_blank">新用户注册</a><br />
+                <a class="a_12_000000" href="javascript:void(0)" target="_blank">怎样下订单</a><br />
+                <a class="a_12_000000" href="javascript:void(0)" target="_blank">关于会员积分</a><br />
+                <a class="a_12_000000" href="javascript:void(0)" target="_blank">礼券</a><a class="a_12_000000" href="javascript:void(0)" target="_blank">,礼品卡</a><br />
+            </td>
+            <td align="left" class="style_h170" valign="top"><a class="a_12_000000" href="javascript:void(0)" target="_blank">支付方式</a><br />
+                <a class="a_12_000000" href="javascript:void(0)" target="_blank">支付期限</a><br />
+                <a class="a_12_000000" href="javascript:void(0)" target="_blank">退款方式及时间</a> </td>
+            <td align="left" class="style_h170" valign="top"><a class="a_12_000000" href="javascript:void(0)" target="_blank">运费收取标准</a><br />
+                <a class="a_12_000000" href="javascript:void(0)" target="_blank">配送时间及配送范围</a> </td>
+            <td align="left" class="style_h170" valign="top"><a class="a_12_000000" href="javascript:void(0)" target="_blank">服务保障承诺</a><br />
+                <a class="a_12_000000" href="javascript:void(0)" target="_blank">退换货政策</a><br />
+                <a class="a_12_000000" href="javascript:void(0)" target="_blank">退换货流程</a> </td>
+            <td align="left" class="style_h170" valign="top"><a class="a_12_000000" href="javascript:void(0)" target="_blank">常见问题</a><br />
+                <a class="a_12_000000" href="javascript:void(0)" target="_blank">找回密码</a><br />
+                <a class="a_12_000000" href="javascript:void(0) target="_blank">顾客建议</a><br />
+                <a class="a_12_000000" href="javascript:void(0)" target="_blank">顾客投诉</a><br />
+            </td>
+        </tr>
+    </table>
+            </div>
+</center>
+   <!-- 
+  
+-->
+ <div id="dialog-message" title="错误提示!!">
+	<span id="showUserLoginMsg" style="font-size:14px;color:red"></span>
+     <a href="javascript:void(0)" id="locationLogin">请登录</a>
+</div>
+
+    <div id="showDialogMessage">
+        <span id="showCartMsg"></span>
+        <a href="/Cart.aspx">去购物车结账</a><br />
+        <a href="/BookList.aspx">继续购物</a>
+    </div>
+    
+</body>
+
+</html>

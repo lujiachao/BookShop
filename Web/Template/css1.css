@@ -1,0 +1,770 @@
+@charset "utf-8";
+/* CSS Document */
+<STYLE type=text/css>
+TD {
+	FONT-SIZE: 12px;
+}
+P {
+	FONT-SIZE: 12px
+}
+LI {
+	FONT-SIZE: 12px
+}
+
+INPUT {
+	FONT-SIZE: 12px;
+}
+SELECT {
+	FONT-SIZE: 12px;
+	}
+t1 {
+    FONT-SIZE: 12px ;color:#ED71A3;
+}	
+
+.F1 {
+	FONT-SIZE: 12px ;color:#8F8F8F;
+}
+.F2 {
+	FONT-SIZE: 14px ;color:#ffffff;
+	font-weight: bold;
+}
+.F3 {
+	FONT-SIZE: 12px ;color:#CC6700;
+	font-weight: bold;
+}
+.F4 {
+	FONT-SIZE: 14px ;color:#F11E54;
+	font-weight: bold;
+}
+.F5 {
+	FONT-SIZE: 12px ;color:#85868A;
+	
+}
+.F6 {
+	FONT-SIZE: 13px ;color:#C29339;
+	font-weight: bold;
+	
+}
+.F7 {
+	FONT-SIZE: 14px ;color:#CD6600;
+	font-weight: bold;
+}
+.F8 {
+	FONT-SIZE: 12px ;color:#9C9C9C;
+}
+.F9 {
+	FONT-SIZE: 14px ;color:#CD6600;
+}
+.F10 {
+	FONT-SIZE: 12px ;color:#C59239;
+}
+.F11 {
+	FONT-SIZE: 12px ;color:#868686;
+}
+.F12 {
+	FONT-SIZE: 12px ;color:#06329B;
+}
+.F13 {
+	FONT-SIZE: 12px ;color:#434343;
+}
+.F14 {
+	FONT-SIZE: 14px ;color:#ffffff;
+}
+.F15 {
+	FONT-SIZE: 14px ;color:#F11E54;
+}
+.F16 {
+	FONT-SIZE: 12px ;color:#F55A89;
+}
+.F17 {
+	FONT-SIZE: 12px ;color:#CC3300;
+}
+.F18 {
+	FONT-SIZE: 14px ;color:#ffffff;
+}
+.F19 {
+	FONT-SIZE: 14px ;color:#333333;
+	font-weight: bold;
+}
+.F20 {
+	FONT-SIZE: 14px ;color:#000000;
+	font-weight: bold;
+}
+.F21 {
+	FONT-SIZE: 14px ;color:#B63657;
+}
+
+.F22 {
+	FONT-SIZE: 14px ;color:#AC0E3B;
+}
+
+.F23 {
+	FONT-SIZE: 16px ;color:#000000;
+	font-weight: bold;
+}
+
+.F24 {
+	FONT-SIZE: 12px ;color:#606060;
+	
+}
+
+.F25 {
+	FONT-SIZE: 14px ;color:#404040;
+	font-weight: bold;
+}
+
+.F26 {
+	FONT-SIZE: 14px ;color:#414141;
+	
+}
+
+.F27 {
+	FONT-SIZE: 14px ;color:#ffffff;
+	font-weight: bold;
+}
+
+.F28 {
+	FONT-SIZE: 12px ;color:#ff7000;
+
+}
+
+.F29 {
+	FONT-SIZE: 14px ;color:#E68F02;
+	font-weight: bold;
+}
+
+.F30 {
+	FONT-SIZE: 12px ;color:#ffffff;
+	
+}
+
+
+.F31 {
+	FONT-SIZE: 12px ;color:#4A4A4A;
+	
+}
+
+
+.F32 {
+	FONT-SIZE: 14px ;color:#7B2E00;
+	
+}
+
+.F33 {
+	FONT-SIZE: 14px ;color:#06329B;
+	
+}
+
+
+.F34 {
+	FONT-SIZE: 14px ;color:#081B39;
+	
+}
+
+
+.FN1 {
+	FONT-SIZE: 12px ;COLOR: #3D5376;
+	
+}
+
+.FN2 {
+	FONT-SIZE: 14px ;color:#172E54;
+	font-weight: bold;
+}
+
+.FN3 {
+	FONT-SIZE: 14px ;color:#081B39;
+	
+}
+
+.FN4 {
+	FONT-SIZE: 14px ;color:#E68F02;
+}
+
+.FN5 {
+	FONT-SIZE: 14px ;color:#1A66B3;
+}
+
+.FN6 {
+	FONT-SIZE: 14px ;color:#06329B;font-weight: bold;
+}
+
+.FN7 {
+	FONT-SIZE: 14px ;color:#000000;font-weight: bold;
+}
+.FN8 {
+	FONT-SIZE: 14px ;color:#000000;
+}
+.FNn1 {
+	FONT-SIZE: 14px ;color:#7B2E00;font-weight: bold;
+}
+body {
+
+	  margin-left: 0px;
+	  margin-top: 0px;
+	  margin-right: 0px;
+	  margin-bottom: 0px;
+}
+
+.L16 {
+	LINE-HEIGHT: 200%
+}
+
+.L15 {
+	LINE-HEIGHT: 180%
+}
+.L19 {
+	LINE-HEIGHT: 185%
+}
+
+.L14 {
+	LINE-HEIGHT: 160%
+}
+.L25 {
+	LINE-HEIGHT: 250%
+}
+
+.L13 {
+	LINE-HEIGHT: 130%
+}
+
+A:link {
+	FONT-SIZE: 12px; COLOR: #06329B; TEXT-DECORATION: none
+}
+A:active {
+	FONT-SIZE: 12px; COLOR: #FF7000; TEXT-DECORATION: underline
+}
+A:visited {
+	FONT-SIZE: 12px; COLOR: #06329B; TEXT-DECORATION: none
+}
+A:hover {
+	FONT-SIZE: 12px; COLOR: #FF7000; TEXT-DECORATION: underline
+}
+
+A.A1:link {
+	FONT-SIZE: 12px; COLOR: #0041D3; TEXT-DECORATION: none
+}
+A.A1:active {
+	FONT-SIZE: 12px; COLOR: #FF7000; TEXT-DECORATION: underline
+}
+A.A1:visited {
+	FONT-SIZE: 12px; COLOR: #0041D3; TEXT-DECORATION: none
+}
+A.A1:hover {
+	FONT-SIZE: 12px; COLOR: #FF7000; TEXT-DECORATION: underline
+}
+
+
+A.A2:link {
+	FONT-SIZE: 12px; COLOR: #000000; TEXT-DECORATION: none
+}
+A.A2:active {
+	FONT-SIZE: 12px; COLOR: #FF7000; TEXT-DECORATION: underline
+}
+A.A2:visited {
+	FONT-SIZE: 12px; COLOR: #000000; TEXT-DECORATION: none
+}
+A.A2:hover {
+	FONT-SIZE: 12px; COLOR: #FF7000; TEXT-DECORATION: underline
+}
+
+
+A.A3:link {
+	FONT-SIZE: 12px; COLOR: #06329B; TEXT-DECORATION: none
+}
+A.A3:active {
+	FONT-SIZE: 12px; COLOR: #FF7000; TEXT-DECORATION: none
+}
+A.A3:visited {
+	FONT-SIZE: 12px; COLOR: #06329B; TEXT-DECORATION: none
+}
+A.A3:hover {
+	FONT-SIZE: 12px; COLOR: #FF7000; TEXT-DECORATION: none
+}
+
+
+A.A4:link {
+	FONT-SIZE: 14px; COLOR: #CD6702; TEXT-DECORATION: none
+}
+A.A4:active {
+	FONT-SIZE: 14px; COLOR: #CD6702; TEXT-DECORATION: underline
+}
+A.A4:visited {
+	FONT-SIZE: 14px; COLOR: #CD6702; TEXT-DECORATION: none
+}
+A.A4:hover {
+	FONT-SIZE: 14px; COLOR: #CD6702; TEXT-DECORATION: underline
+}
+
+
+A.A5:link {
+	FONT-SIZE: 12px; COLOR: #669DC6; font-weight: bold;TEXT-DECORATION: none
+}
+A.A5:active {
+	FONT-SIZE: 12px; COLOR: #669DC6; font-weight: bold;TEXT-DECORATION: underline
+}
+A.A5:visited {
+	FONT-SIZE: 12px; COLOR: #669DC6; font-weight: bold;TEXT-DECORATION: none
+}
+A.A5:hover {
+	FONT-SIZE: 12px; COLOR: #669DC6; font-weight: bold;TEXT-DECORATION: underline
+}
+
+
+A.A6:link {
+	FONT-SIZE: 14px; COLOR: #F11E54; font-weight: bold;TEXT-DECORATION: none
+}
+A.A6:active {
+	FONT-SIZE: 14px; COLOR: #F11E54; font-weight: bold;TEXT-DECORATION: underline
+}
+A.A6:visited {
+	FONT-SIZE: 14px; COLOR: #F11E54; font-weight: bold;TEXT-DECORATION: none
+}
+A.A6:hover {
+	FONT-SIZE: 14px; COLOR: #F11E54; font-weight: bold;TEXT-DECORATION: underline
+}
+
+
+A.A7:link {
+	FONT-SIZE: 12px; COLOR: #669DC6; TEXT-DECORATION: none
+}
+A.A7:active {
+	FONT-SIZE: 12px; COLOR: #669DC6; TEXT-DECORATION: underline
+}
+A.A7:visited {
+	FONT-SIZE: 12px; COLOR: #669DC6; TEXT-DECORATION: none
+}
+A.A7:hover {
+	FONT-SIZE: 12px; COLOR: #669DC6; TEXT-DECORATION: underline
+}
+
+
+A.A8:link {
+	FONT-SIZE: 12px; COLOR: #E40846; TEXT-DECORATION: none
+}
+A.A8:active {
+	FONT-SIZE: 12px; COLOR: #E40846; TEXT-DECORATION: underline
+}
+A.A8:visited {
+	FONT-SIZE: 12px; COLOR: #E40846; TEXT-DECORATION: none
+}
+A.A8:hover {
+	FONT-SIZE: 12px; COLOR: #E40846; TEXT-DECORATION: underline
+}
+
+A.A9:link {
+	FONT-SIZE: 12px; COLOR: #414141; TEXT-DECORATION: none
+}
+A.A9:active {
+	FONT-SIZE: 12px; COLOR: #414141; TEXT-DECORATION: underline
+}
+A.A9:visited {
+	FONT-SIZE: 12px; COLOR: #414141; TEXT-DECORATION: none
+}
+A.A9:hover {
+	FONT-SIZE: 12px; COLOR: #414141; TEXT-DECORATION: underline
+}
+
+A.A10:link {
+	FONT-SIZE: 12px; COLOR: #ffffff; TEXT-DECORATION: none
+}
+A.A10:active {
+	FONT-SIZE: 12px; COLOR: #ffffff; TEXT-DECORATION: none
+}
+A.A10:visited {
+	FONT-SIZE: 12px; COLOR: #ffffff; TEXT-DECORATION: none
+}
+A.A10:hover {
+	FONT-SIZE: 12px; COLOR: #ffffff; TEXT-DECORATION: none
+}
+
+
+A.A11:link {
+	FONT-SIZE: 12px; COLOR: #06329B; TEXT-DECORATION: none
+}
+A.A11:active {
+	FONT-SIZE: 12px; COLOR: #FF7000; TEXT-DECORATION: underline
+}
+A.A11:visited {
+	FONT-SIZE: 12px; COLOR: #06329B; TEXT-DECORATION: none
+}
+A.A11:hover {
+	FONT-SIZE: 12px; COLOR: #FF7000; TEXT-DECORATION: underline
+}
+
+
+A.A12:link {
+	FONT-SIZE: 12px; COLOR: #666666; TEXT-DECORATION: none
+}
+A.A12:active {
+	FONT-SIZE: 12px; COLOR: #FF7000; TEXT-DECORATION: underline
+}
+A.A12:visited {
+	FONT-SIZE: 12px; COLOR: #666666; TEXT-DECORATION: none
+}
+A.A12:hover {
+	FONT-SIZE: 12px; COLOR: #FF7000; TEXT-DECORATION: underline
+}
+
+
+A.A13:link {
+	FONT-SIZE: 14px; COLOR: #06329B; TEXT-DECORATION: none
+}
+A.A13:active {
+	FONT-SIZE: 14px; COLOR: #FF7000; TEXT-DECORATION: underline
+}
+A.A13:visited {
+	FONT-SIZE: 14px; COLOR: #06329B; TEXT-DECORATION: none
+}
+A.A13:hover {
+	FONT-SIZE: 14px; COLOR: #FF7000; TEXT-DECORATION: underline
+}
+
+
+A.A14:link {
+	FONT-SIZE: 12px; COLOR: #666666; TEXT-DECORATION: none
+}
+A.A14:active {
+	FONT-SIZE: 12px; COLOR: #FF7000; TEXT-DECORATION: underline
+}
+A.A14:visited {
+	FONT-SIZE: 12px; COLOR: #666666; TEXT-DECORATION: none
+}
+A.A14:hover {
+	FONT-SIZE: 12px; COLOR: #FF7000; TEXT-DECORATION: underline
+}
+
+
+A.A15:link {
+	FONT-SIZE: 14px; COLOR: #06329B; TEXT-DECORATION: none
+}
+A.A15:active {
+	FONT-SIZE: 14px; COLOR: #FF7000; TEXT-DECORATION: underline
+}
+A.A15:visited {
+	FONT-SIZE: 14px; COLOR: #06329B; TEXT-DECORATION: none
+}
+A.A15:hover {
+	FONT-SIZE: 14px; COLOR: #FF7000; TEXT-DECORATION: underline
+}
+
+
+A.A16:link {
+	FONT-SIZE: 12px; COLOR: #0F3B9E; TEXT-DECORATION: none
+}
+A.A16:active {
+	FONT-SIZE: 12px; COLOR: #FF7000; TEXT-DECORATION: underline
+}
+A.A16:visited {
+	FONT-SIZE: 12px; COLOR: #0F3B9E; TEXT-DECORATION: none
+}
+A.A16:hover {
+	FONT-SIZE: 12px; COLOR: #FF7000; TEXT-DECORATION: underline
+}
+
+
+A.A17:link {
+	FONT-SIZE: 14px; COLOR: #ffffff; TEXT-DECORATION: none
+}
+A.A17:active {
+	FONT-SIZE: 14px; COLOR: #FBE27D; TEXT-DECORATION: none
+}
+A.A17:visited {
+	FONT-SIZE: 14px; COLOR: #ffffff; TEXT-DECORATION: none
+}
+A.A17:hover {
+	FONT-SIZE: 14px; COLOR: #FBE27D; TEXT-DECORATION: none
+}
+
+
+A.A18:link {
+	FONT-SIZE: 14px; COLOR: #06329B; TEXT-DECORATION: none
+}
+A.A18:active {
+	FONT-SIZE: 14px; COLOR: #FF7000; TEXT-DECORATION: none
+}
+A.A18:visited {
+	FONT-SIZE: 14px; COLOR: #06329B; TEXT-DECORATION: none
+}
+A.A18:hover {
+	FONT-SIZE: 14px; COLOR: #FF7000; TEXT-DECORATION: none
+}
+
+
+A.A19:link {
+	FONT-SIZE: 12px; COLOR: #06329B; TEXT-DECORATION: none
+}
+A.A19:active {
+	FONT-SIZE: 12px; COLOR: #FF7000; TEXT-DECORATION: none
+}
+A.A19:visited {
+	FONT-SIZE: 12px; COLOR: #06329B; TEXT-DECORATION: none
+}
+A.A19:hover {
+	FONT-SIZE: 12px; COLOR: #FF7000; TEXT-DECORATION: none
+}
+
+A.A20:link {
+	FONT-SIZE: 14px; COLOR: #06329B; TEXT-DECORATION: none
+}
+A.A20:active {
+	FONT-SIZE: 14px; COLOR: #FF7000; TEXT-DECORATION: underline
+}
+A.A20:visited {
+	FONT-SIZE: 14px; COLOR: #06329B; TEXT-DECORATION: none
+}
+A.A20:hover {
+	FONT-SIZE: 14px; COLOR: #FF7000; TEXT-DECORATION: underline
+}
+
+A.A21:link {
+	FONT-SIZE: 12px; COLOR: #878787; TEXT-DECORATION: none
+}
+A.A21:active {
+	FONT-SIZE: 12px; COLOR: #FF7000; TEXT-DECORATION: underline
+}
+A.A21:visited {
+	FONT-SIZE: 12px; COLOR: #878787; TEXT-DECORATION: none
+}
+A.A21:hover {
+	FONT-SIZE: 12px; COLOR: #FF7000; TEXT-DECORATION: underline
+}
+
+A.A22:link {
+	FONT-SIZE: 14px; COLOR: #0042D1; TEXT-DECORATION: none
+}
+A.A22:active {
+	FONT-SIZE: 14px; COLOR: #FF7000; TEXT-DECORATION: underline
+}
+A.A22:visited {
+	FONT-SIZE: 14px; COLOR: #0042D1; TEXT-DECORATION: none
+}
+A.A22:hover {
+	FONT-SIZE: 14px; COLOR: #FF7000; TEXT-DECORATION: underline
+}
+
+
+A.A23:link {
+	FONT-SIZE: 12px; COLOR: #FF7000; TEXT-DECORATION: none
+}
+A.A23:active {
+	FONT-SIZE: 12px; COLOR: #FF7000; TEXT-DECORATION: underline
+}
+A.A23:visited {
+	FONT-SIZE: 12px; COLOR: #FF7000; TEXT-DECORATION: none
+}
+A.A23:hover {
+	FONT-SIZE: 12px; COLOR: #FF7000; TEXT-DECORATION: underline
+}
+
+
+
+A.A24:link {
+	FONT-SIZE: 12px; COLOR: #4D4D4D; TEXT-DECORATION: none
+}
+A.A24:active {
+	FONT-SIZE: 12px; COLOR: #FF7000; TEXT-DECORATION: underline
+}
+A.A24:visited {
+	FONT-SIZE: 12px; COLOR: #4D4D4D; TEXT-DECORATION: none
+}
+A.A24:hover {
+	FONT-SIZE: 12px; COLOR: #FF7000; TEXT-DECORATION: underline
+}
+
+
+A.A25:link {
+	FONT-SIZE: 12px; COLOR: #F3BEC5; TEXT-DECORATION: none
+}
+A.A25:active {
+	FONT-SIZE: 12px; COLOR: #FCE0E4; TEXT-DECORATION: underline
+}
+A.A25:visited {
+	FONT-SIZE: 12px; COLOR: #F3BEC5; TEXT-DECORATION: none
+}
+A.A25:hover {
+	FONT-SIZE: 12px; COLOR: #FCE0E4; TEXT-DECORATION: underline
+}
+
+
+A.A26:link {
+	FONT-SIZE: 12px; COLOR: #ffffff; TEXT-DECORATION: none
+}
+A.A26:active {
+	FONT-SIZE: 12px; COLOR: #ffffff; TEXT-DECORATION: underline
+}
+A.A26:visited {
+	FONT-SIZE: 12px; COLOR: #ffffff; TEXT-DECORATION: none
+}
+A.A26:hover {
+	FONT-SIZE: 12px; COLOR: #ffffff; TEXT-DECORATION: underline
+}
+
+A.A27:link {
+	FONT-SIZE: 12px; COLOR: #1A66B3; TEXT-DECORATION: none
+}
+A.A27:active {
+	FONT-SIZE: 12px; COLOR: #FF7000; TEXT-DECORATION: underline
+}
+A.A27:visited {
+	FONT-SIZE: 12px; COLOR: #1A66B3; TEXT-DECORATION: none
+}
+A.A27:hover {
+	FONT-SIZE: 12px; COLOR: #FF7000; TEXT-DECORATION: underline
+}
+
+A.A28:link {
+	FONT-SIZE: 12px; COLOR: #B4435F; TEXT-DECORATION: none
+}
+A.A28:active {
+	FONT-SIZE: 12px; COLOR: #FF7000; TEXT-DECORATION: underline
+}
+A.A28:visited {
+	FONT-SIZE: 12px; COLOR: #B4435F; TEXT-DECORATION: none
+}
+A.A28:hover {
+	FONT-SIZE: 12px; COLOR: #FF7000; TEXT-DECORATION: underline
+}
+
+A.A29:link {
+	FONT-SIZE: 12px; COLOR: #3D84C6; TEXT-DECORATION: underline
+}
+A.A29:active {
+	FONT-SIZE: 12px; COLOR: #FF7000; TEXT-DECORATION: underline
+}
+A.A29:visited {
+	FONT-SIZE: 12px; COLOR: #3D84C6; TEXT-DECORATION: underline
+}
+A.A29:hover {
+	FONT-SIZE: 12px; COLOR: #FF7000; TEXT-DECORATION: underline
+}
+
+A.AN1:link {
+	FONT-SIZE: 12px; COLOR: #3D5376; TEXT-DECORATION: none
+}
+A.AN1:active {
+	FONT-SIZE: 12px; COLOR: #FF7000; TEXT-DECORATION: none
+}
+A.AN1:visited {
+	FONT-SIZE: 12px; COLOR: #3D5376; TEXT-DECORATION: none
+}
+A.AN1:hover {
+	FONT-SIZE: 12px; COLOR: #FF7000; TEXT-DECORATION: none
+}
+
+
+A.AN2:link {
+	FONT-SIZE: 12px; COLOR: #606060; TEXT-DECORATION: none
+}
+A.AN2:active {
+	FONT-SIZE: 12px; COLOR: #606060; TEXT-DECORATION: underline
+}
+A.AN2:visited {
+	FONT-SIZE: 12px; COLOR: #606060; TEXT-DECORATION: none
+}
+A.AN2:hover {
+	FONT-SIZE: 12px; COLOR: #606060; TEXT-DECORATION: underline
+}
+
+
+A.AN3:link {
+	FONT-SIZE: 14px; COLOR: #172E54; TEXT-DECORATION: none
+}
+A.AN3:active {
+	FONT-SIZE: 14px; COLOR: #172E54; TEXT-DECORATION: none
+}
+A.AN3:visited {
+	FONT-SIZE: 14px; COLOR: #172E54; TEXT-DECORATION: none
+}
+A.AN3:hover {
+	FONT-SIZE: 14px; COLOR: #172E54; TEXT-DECORATION: none
+}
+
+
+A.AN4:link {
+	FONT-SIZE: 14px; COLOR: #455B80; TEXT-DECORATION: none
+}
+A.AN4:active {
+	FONT-SIZE: 14px; COLOR: #455B80; TEXT-DECORATION: none
+}
+A.AN4:visited {
+	FONT-SIZE: 14px; COLOR: #455B80; TEXT-DECORATION: none
+}
+A.AN4:hover {
+	FONT-SIZE: 14px; COLOR: #455B80; TEXT-DECORATION: none
+}
+
+
+A.AN5:link {
+	FONT-SIZE: 12px; COLOR: #455B80; TEXT-DECORATION: none
+}
+A.AN5:active {
+	FONT-SIZE: 12px; COLOR: #455B80; TEXT-DECORATION: underline
+}
+A.AN5:visited {
+	FONT-SIZE: 12px; COLOR: #455B80; TEXT-DECORATION: none
+}
+A.AN5:hover {
+	FONT-SIZE: 12px; COLOR: #455B80; TEXT-DECORATION: underline
+}
+
+
+A.AN6:link {
+	FONT-SIZE: 12px; COLOR: #5E2708; TEXT-DECORATION: none
+}
+A.AN6:active {
+	FONT-SIZE: 12px; COLOR: #5E2708; TEXT-DECORATION: underline
+}
+A.AN6:visited {
+	FONT-SIZE: 12px; COLOR: #5E2708; TEXT-DECORATION: none
+}
+A.AN6:hover {
+	FONT-SIZE: 12px; COLOR: #5E2708; TEXT-DECORATION: underline
+}
+
+
+A.AN7:link {
+	FONT-SIZE: 12px; COLOR: #ffffff; TEXT-DECORATION: underline
+}
+A.AN7:active {
+	FONT-SIZE: 12px; COLOR: #ffffff; TEXT-DECORATION: none
+}
+A.AN7:visited {
+	FONT-SIZE: 12px; COLOR: #ffffff; TEXT-DECORATION: underline
+}
+A.AN7:hover {
+	FONT-SIZE: 12px; COLOR: #ffffff; TEXT-DECORATION: none
+}
+
+
+A.AN8:link {
+	FONT-SIZE: 12px; COLOR: #06329B; TEXT-DECORATION: underline
+}
+A.AN8:active {
+	FONT-SIZE: 12px; COLOR: #ff7000; TEXT-DECORATION: none
+}
+A.AN8:visited {
+	FONT-SIZE: 12px; COLOR: #06329B; TEXT-DECORATION: underline
+}
+A.AN8:hover {
+	FONT-SIZE: 12px; COLOR: #ff7000; TEXT-DECORATION: none
+}
+
+
+A.AN9:link {
+	FONT-SIZE: 12px; COLOR: #7B2E00; TEXT-DECORATION: none
+}
+A.AN9:active {
+	FONT-SIZE: 12px; COLOR: #7B2E00; TEXT-DECORATION: underline
+}
+A.AN9:visited {
+	FONT-SIZE: 12px; COLOR: #7B2E00; TEXT-DECORATION: none
+}
+A.AN9:hover {
+	FONT-SIZE: 12px; COLOR: #7B2E00; TEXT-DECORATION: underline
+}
+
+p.p1{FONT-SIZE: 12px ;color:#85868A;}
+
+
+</style>

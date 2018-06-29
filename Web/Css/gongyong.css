@@ -1,0 +1,220 @@
+﻿@charset "utf-8";
+/* CSS Document */
+
+
+html { background:#ffffff; color:#000; _background-attachment: fixed; _background-image: url(about:blank); _zoom:expression(function(ele) {
+ele.style.zoom = "1";
+document.execCommand("BackgroundImageCache", false, true);
+}
+(this));
+}
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td { margin:0; padding:0; }
+table { border-collapse:collapse; border-spacing:0; }
+fieldset, img { border:0; }
+input, textarea, select { font-family:inherit; font-size:12px; font-weight:inherit; outline:none; resize:none; }
+em, cite, i { font-style:normal; }
+h1, h2, h3, h4, h5, h6 { font-size: 100%; }
+legend { display:none; }
+li { list-style:none; }
+button { cursor:pointer; }
+textarea { overflow:auto; resize:none; }
+th { font-weight:normal; }
+input { vertical-align:middle; }
+/*
+name:common.css
+author:zen
+date:2010-12-22
+version: 0.1
+build: 1000
+说明: 存放相对独立,全局通用的样式定义
+*/
+
+/*
+ * 清楚浮动 -- 通用用法
+ * IE6下会出现鼠标已过,上下间隔发生变化的BUG.
+ */
+.clearfix:after, .row:after, .wrap:after { content: '\0020'; display: block; height: 0; clear: both;  }
+.clearfix, .row, .wrap { zoom: 1; }
+/*
+ * 隐藏元素 
+ * .hide 通用用法
+ * .v-hide SEO处理,避免被爬虫判断为隐藏元素
+ */
+.hide { display:none; }
+.v-hide { position:absolute; left:-999em; top:-999em; }
+.btn-hide { position:absolute; left:-999em; top:-999em; left:0\9; top:0\9; border:none; background:none; overflow:hidden; font-size:0; text-indent:-99em; }
+/* 标题字体定义 */
+.f-tit { color:#000; font-size:12px; font-family:"Microsoft YaHei", "微软雅黑", "Microsoft JhengHei", "宋体", Arial, sans-serif; }
+.green { color:#006f03; }
+.soft { color:#b5b5b6; }
+.imp { color:#f84992; }
+.red { color:#F00; }
+.ali-c { text-align:center; }
+.ali-r { text-align:right; }
+.fr { float:right;}
+.fl { float:left; }
+/* 间距 */
+.mt { margin-bottom:15px; }
+.p15 { padding:15px; }
+.pl {padding-left:15px;}
+.pr {padding-right:15px;}
+/* 链接样式 */
+a, .link { cursor:pointer; color:#656565; text-decoration:none; }
+a.sub { color:#0c8810; }
+a:hover, .link:hover, a.hover { color:#0c8810; text-decoration:underline; }
+a span { cursor:pointer; }
+body { color:#727171; font:12px/1.5 Tahoma, Helvetica, Arial, "宋体", sans-serif;}
+/*加入购物车*/
+.popout { width: 500px; position:absolute; z-index: 1001; background: #f7f7f7; left: 50%; top: 50%; box-shadow:0 0 10px #ADADAD; border: 2px solid #ADADAD; border-radius: 5px; margin-left:-250px; }
+.popout .close { cursor: pointer; width: 28px; height: 28px; display: block; background: url(/content/images/close.png) no-repeat; position: absolute; right: -10px; top: -10px; }
+.popout .close:hover { background-position: 0 -30px; }
+.pop-title { font-size: 14px; background: #dbdcdc; color: #595757; padding-left: 15px; height: 30px; line-height: 30px; border-radius: 5px 5px 0 0; }
+.pop-title .yb { font-size: 12px; float: left; padding-right: 30px; }
+.pop-title .yb strong { color: #E95513; }
+.pop-box { overflow: hidden; zoom: 1; height:164px; }
+.pop-box h3 { font-weight: normal; color: #796A56; font-family: Simsun; text-indent: 15px; margin: 10px 0 20px; }
+.pop-box h3 a { color: #796A56; text-decoration: underline; }
+.pop-box h3 a:hover { color: #E95513; }
+.pop-box ul { margin-left: 20px; }
+.pop-box ul li { width: 115px; float: left; padding: 0 20px 20px; }
+.pop-box ul li span { display: block; text-align: center; }
+.pop-box ul li .img { width: 80px; margin: 0 auto; display: block; }
+.pop-box ul li .img span { width: 80px; margin-top: 3px; height: 30px; overflow: hidden; }
+.pop-box ul li .price { margin: 10px 0 3px; }
+.pop-box ul li .yb-num { background: url(/content/images/numbg.png) #c0a86b no-repeat; width: 115px; height: 23px; color: #fff; line-height: 23px; }
+.pop-box ul li .yb-num strong { font-size: 13px; vertical-align: middle; }
+.cart-popout { overflow: hidden; zoom: 1; margin: 25px 50px; }
+.cart-popout dt { background: url(/content/images/right-ico-s.png) no-repeat; width: 44px; height: 38px; float: left; margin-right: 15px; }
+.cart-popout dd { float: left; }
+.cart-popout dd h2 { font-size: 15px; font-family: microsoft yahei; }
+.cart-popout dd p { color: #717071; margin: 10px 0; }
+.cart-popout dd p b { font-size: 18px; margin: 0 5px; }
+.cart-popout dd p strong { font-size: 23px; color: #B7A26A; margin: 0 5px; }
+.cart-popout dd p .popout-btn { width: 122px; height: 37px; display: inline-block; background: url(/content/images/pop-btn.png)  no-repeat; color: #fff; text-align: center; font: bold 15px/37px Microsoft Yahei; text-decoration: none; margin-right: 15px; border: none; cursor: pointer; padding:0!important}
+.cart-popout dd p .popout-btn:hover { text-decoration: none; color: #fff; background-position: 0 -37px; }
+.cancel { cursor:pointer }
+ul.pro_jiben { padding:0px; margin:0px; width:730px; border-bottom:1px solid #dfdfdf; overflow:hidden; height:auto; padding:7px; }
+ul.pro_jiben li { width:243px; height:26px; color:#666; float:left; }
+ul.pro_jiben li span { color:#333; }
+#AdLayer { position:fixed; width:20px; height:59px; top:400px; right:160px;  overflow:hidden; display:inline ;}
+img { border:0; }
+.release { width: 109px; height: 32px; overflow: hidden; background: url(/content/images/anniu.gif) no-repeat right; border:none; color:White; font-weight:bolder }
+/*加入购物车*/
+
+body{width:100%;}
+.clear_channel { clear:both; margin-top:10px; }
+#login_pop {display:none;}
+#login_fullbg {
+	background:#000;   	
+	filter:alpha(opacity=30);
+	-moz-opacity:0.3;
+	-khtml-opacity: 0.3;
+	opacity: 0.3;
+	position:absolute; 
+	z-index:99999;
+	left:0;
+	top:0;
+	}
+#login_dialog {background:#fff; border:2px #f7f7f7 solid; width:400px; height:400px; position:fixed; _position:absolute; z-index:999999;
+box-shadow:2px 2px 2px #666;
+-moz-box-shadow: 2px 2px 2px #666;
+-webkit-box-shadow: 2px 2px 2px #666;
+/* For IE 8 */
+-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=2, Direction=135, Color='#666666')";
+/* For IE 5.5 - 7 */
+filter: progid:DXImageTransform.Microsoft.Shadow(Strength=2, Direction=135, Color='#666666');
+}
+#login_dialog A {color:#005ea7; }
+.dialog_tit {padding: 0 11px;
+background: #8DB7DC;
+border: none;
+color: #fff;
+height: 27px;
+line-height:27px;
+
+}
+.dialog_tit SPAN
+{
+	font-size:14px;
+	font-weight:700;
+	_float:left
+}
+.dialog_tit A
+{float:right;
+color:#005ea7;
+}
+
+.q_log_tab {border-bottom:1px #ddd solid; height:30px; margin:20px 20px;margin-bottom:-1px; }
+.q_Tab { padding-left:10px; margin-bottom:0; overflow:hidden; height:31px; }
+.q_Tab LI.q_curr{height: 31px;
+background: #FFF;
+margin-top: 0;
+color: #C00;
+font-weight: bold;
+line-height: 30px;
+-moz-box-shadow: 1px 6px 2px #dddddd;
+-webkit-box-shadow: 1px 6px 2px #dddddd;
+box-shadow: 1px 6px 2px #dddddd;
+}
+.q_Tab LI.q_curr A{color:#c00;}
+.q_Tab LI{
+	
+	text-align:center;
+	background: #f7f7f7;
+width: 83px;
+height: 25px;
+margin-top: 4px;
+padding-right: 2px;
+margin-right: 5px;
+text-align: center;
+line-height: 25px;
+font-weight: bold;
+color: #333;
+font-size: 14px;
+border: 1px solid #dddddd;
+border-bottom: none;
+}
+.login_form {width:280px; margin:20px auto;}
+.login_item {margin-bottom:6px; position:relative; z-index:5;}
+.low_zIndex {z-index:4!important;}
+.qlogin_warn {
+position: absolute;
+width: 265px;
+padding: 2px 0 2px 3px;
+left: 0px;
+top: 52px;
+_top: 53px;
+border: 1px solid #ffbdbf;
+color: #e6393d;
+background: #ffebec;
+float: none;
+line-height: 18px;
+z-index: 10;
+display:none;
+}
+.login_item P{color:#888;}
+.login_item INPUT{width: 245px;
+height: 24px;
+line-height: 24px;
+padding: 4px 20px 4px 3px;
+border: 1px solid #e1e1e1;
+font-size: 14px;
+font-family: arial,"宋体";
+background:url(/content/images/icos/qlogin_itembg.png) no-repeat;
+}
+INPUT.input_error {border:1px #c00 solid;}
+INPUT.q_uname {background-position:240px 8px;}
+INPUT.q_upwd {background-position:240px -40px;}
+.qlogin_options
+{margin-top:20px;}
+.qlogin_btn { height:55px; margin-top: 20px;}
+.qlogin_btn BUTTON
+{
+width: 270px;
+height: 36px;
+line-height: 34px;
+background:url(/content/images/icos/q_login_btn.png) no-repeat 0 0;
+border:none;
+}
+.q_login_other p{color:#888;}
+.q_login_other A{padding-right:5px;}
